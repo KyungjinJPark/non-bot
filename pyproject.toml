@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "non-bot"
+version = "0.2.0"
+description = "A discord bot named 'non-bot'"
+authors = ["Me"]
+
+[tool.poetry.scripts]
+start = "python main.py"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+discord = "^1.7.3"
+discord-py-slash-command = "^2.3.2"
+
+[tool.poetry.dev-dependencies]
