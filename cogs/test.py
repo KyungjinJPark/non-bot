@@ -24,7 +24,7 @@ class Test(commands.Cog): # `Test` inherits from `commands.Cog`
     @cog_ext.cog_slash(description='ᕕ( ᐛ )ᕗ', guild_ids=guild_ids)
     async def ping(self, ctx: SlashContext):
         embed = discord.Embed(title='Baby seals! ( ￫ᴥ￩ )', description=f' delay: {round(self.bot.latency * 1000)}ms')
-        await respond(ctx, embed=embed)
+        await ctx.send(embed=embed)
 
     @cog_ext.cog_slash(description='(ﾟ Дﾟ ;)', guild_ids=guild_ids)
     async def huh(self, ctx: SlashContext):

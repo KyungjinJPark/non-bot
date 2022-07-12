@@ -8,6 +8,7 @@ import os
 import importlib
 from helpers.gen import respond
 guild_ids = importlib.import_module('non-only.env').DC_GUILDS.values()
+DC_BOT_TOKEN = importlib.import_module('non-only.env').DC_BOT_TOKEN
 
 
 # Bot inits
@@ -37,7 +38,7 @@ def get_all_cogs():
 def load_all_cogs(cogs_list):
     '''Load a list of cogs'''
     for cog in cogs_list:
-        bot.load_extension(f'cogs.{cog["value"]}')
+        bot.load_extension(f'cogs.{cog}')
 
 # Initial load of cogs
 cogs_list = get_all_cogs()
@@ -141,4 +142,4 @@ async def reload_all(ctx):
 ################################
 
 
-bot.run(os.environ['DC_BOT_TOKEN'])
+bot.run(DC_BOT_TOKEN)

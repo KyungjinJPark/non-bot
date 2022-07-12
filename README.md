@@ -6,4 +6,4 @@
 # TODO
 
 - start script not working
-- db not connected
+- tests?

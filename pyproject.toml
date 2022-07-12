@@ -5,7 +5,7 @@ description = "A discord bot named 'non-bot'"
 authors = ["Me"]
 
 [tool.poetry.scripts]
-start = "python main.py"
+start = "python main.py" # BRU. how to use this
 
 [tool.poetry.dependencies]
 python = "^3.8"
