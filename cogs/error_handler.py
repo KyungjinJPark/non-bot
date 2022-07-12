@@ -4,16 +4,17 @@ from discord_slash import cog_ext, SlashContext
 from discord_slash.utils.manage_commands import create_option, create_choice
 from discord_slash.model import SlashCommandOptionType
 
+import importlib  
+guild_ids = importlib.import_module('non-only.env').DC_GUILDS.values()
+
 
 class ErrorHandler(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    '''
-    On cog load
-    '''
     @commands.Cog.listener()
     async def on_ready(self):
+        '''On cog load'''
         print(f'{__class__.__name__} cog is ready!')
 
 
@@ -32,9 +33,6 @@ class ErrorHandler(commands.Cog):
             The Exception raised.
         """ # this is apparently how to document? idk I stole it from the docs
         
-        # WILL ONLY CATCH BUILT-IN DISCORD ERRORS (anything under discord.DiscordException)
-        # This is not true anymore
-
         if isinstance(error, commands.CommandNotFound):
             err_cmd = str(error).split('"')[1]
             await ctx.send(f'`{err_cmd}` is not a command I recognize.')
@@ -49,7 +47,6 @@ class ErrorHandler(commands.Cog):
             await ctx.send(f'Some... error happened... No handler for this one. Error dump:\n```\n{error}\n```')
             print(f'UNHANDLED ERROR > {error}')
 
-    guild_ids = [000000000000000000, 000000000000000000]
     @cog_ext.cog_slash(description='throw an error',
                         options=[
                             create_option(
@@ -67,6 +64,7 @@ class ErrorHandler(commands.Cog):
         else:
             print('Assertion Error')
             raise AssertionError()
+
 
 def setup(bot):
     bot.add_cog(ErrorHandler(bot))
