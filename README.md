@@ -7,3 +7,4 @@
 
 - start script not working
 - tests?
+- channel & guild support
