@@ -5,10 +5,7 @@ from discord_slash.utils.manage_commands import create_option, create_choice
 from discord_slash.model import SlashCommandOptionType
 
 import os
-import importlib
-from helpers.gen import respond
-guild_ids = importlib.import_module('non-only.env').DC_GUILDS.values()
-DC_BOT_TOKEN = importlib.import_module('non-only.env').DC_BOT_TOKEN
+from helpers.gen import respond, guild_ids
 
 
 # Bot inits
@@ -142,4 +139,4 @@ async def reload_all(ctx):
 ################################
 
 
-bot.run(DC_BOT_TOKEN)
+bot.run(os.getenv('DC_BOT_TOKEN'))

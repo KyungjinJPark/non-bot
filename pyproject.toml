@@ -11,5 +11,6 @@ start = "python main.py" # BRU. how to use this
 python = "^3.8"
 discord = "^1.7.3"
 discord-py-slash-command = "^2.3.2"
+psycopg2 = "^2.9.3"
 
 [tool.poetry.dev-dependencies]

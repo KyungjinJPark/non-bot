@@ -4,8 +4,7 @@ from discord_slash import cog_ext, SlashContext
 from discord_slash.utils.manage_commands import create_option, create_choice
 from discord_slash.model import SlashCommandOptionType
 
-import importlib  
-guild_ids = importlib.import_module('non-only.env').DC_GUILDS.values()
+from helpers.gen import guild_ids
 
 
 class ErrorHandler(commands.Cog):

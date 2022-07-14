@@ -7,5 +7,6 @@ discord-py-slash-command @ file:///home/koi/.cache/pypoetry/artifacts/34/cb/d2/9
 discord.py @ file:///home/koi/.cache/pypoetry/artifacts/93/3d/7e/a71579025e378cc8608f84db0999aa01171575fc9bd9078988d8520a75/discord.py-1.7.3-py3-none-any.whl
 idna @ file:///home/koi/.cache/pypoetry/artifacts/f7/09/c9/8e80952436ff87855ddff4891a35ecf913b2b5dc97911f02a070ff2b1f/idna-3.3-py3-none-any.whl
 multidict @ file:///home/koi/.cache/pypoetry/artifacts/f5/6f/72/23c8129e53a29d981196789f195c6b9162a585d559c0fd55df96f3453a/multidict-6.0.2-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+psycopg2 @ file:///home/koi/.cache/pypoetry/artifacts/3c/7a/60/e4a0d26c4cee1923be3b7ae2cb545f115a822e112a6c5b5434bd25eacd/psycopg2-2.9.3.tar.gz
 typing_extensions @ file:///home/koi/.cache/pypoetry/artifacts/69/7e/7f/bd6599df2b6884385c80a4e64d8140b85cde607b3747b4fc324cb353aa/typing_extensions-4.3.0-py3-none-any.whl
 yarl @ file:///home/koi/.cache/pypoetry/artifacts/2c/83/5a/158749cd44edaa805109a71335543407853e78baad4ccdd4fb58410453/yarl-1.7.2-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl

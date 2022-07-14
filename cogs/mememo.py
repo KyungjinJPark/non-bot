@@ -4,36 +4,35 @@ from discord_slash import cog_ext, SlashContext
 from discord_slash.utils.manage_commands import create_option, create_choice
 from discord_slash.model import SlashCommandOptionType
 
-import json
 import os
-import importlib
-from helpers.gen import respond, temp_send, temp_reply
-guild_ids = importlib.import_module('non-only.env').DC_GUILDS.values()
+import psycopg2
+from helpers.gen import guild_ids, respond, temp_send, temp_reply
 
 
 ################################
-#  Json Helpers                #
+#  Database Helpers            #
 ################################
 
-fp = os.path.join(os.path.dirname(__file__), '../non-only/mememos.json')
+conn = psycopg2.connect(os.getenv('DATABASE_URL'))
+cur = conn.cursor()
+
 def get_mememo_keys():
-    with open(fp, 'r') as f:
-        data = json.load(f)
-    return data.keys()
+    mmm_keys = []
+    cur.execute("SELECT * FROM mememos;")
+    for record in cur:
+        mmm_keys.append(record[1])
+    return mmm_keys
 def get_mememo(key):
-    with open(fp, 'r') as f:
-        data = json.load(f)
-    return data[key]
+    mmm_msg_id = -1
+    cur.execute(f"SELECT * FROM mememos WHERE name = '{key}';") # TODO: SQL injection moment
+    for record in cur:
+        mmm_msg_id = record[2]
+    return mmm_msg_id
 def update_mememo(key, val):
-    with open(fp, 'r+') as f:
-        data = json.load(f)
-        data[key] = val
-        json.dump(data, f)
+    cur.execute(f"""INSERT INTO mememos (name, msg_id) VALUES ('{key}', '{val}'); COMMIT;
+    """) # TODO: SQL injection moment
 def delete_mememo(key):
-    with open(fp, 'r+') as f:
-        data = json.load(f)
-        del data[key]
-        json.dump(data, f)
+    cur.execute(f"DELETE FROM mememos WHERE name = '{key}'; COMMIT;") # TODO: SQL injection moment
 
 ################################
 
@@ -92,13 +91,19 @@ class Mememo(commands.Cog):
         guild_ids=guild_ids
     )
     async def recall(self, ctx, memory):
+        print('a')
         recall_msg = await ctx.channel.fetch_message(get_mememo(memory))
+        print('r')
 
         files = []
         for attachment in recall_msg.attachments:
+            print('s')
             files.append(await attachment.to_file(spoiler=attachment.is_spoiler()))
+        print('t')
         await respond(ctx, f'aauuhh')
+        print('g')
         await recall_msg.reply(f'I remember `{memory}`!\n{recall_msg.content}', files=files, mention_author=False)
+        print('w')
 
     @cog_ext.cog_slash(
         description='Tell non bot to forget the message associated with a name',

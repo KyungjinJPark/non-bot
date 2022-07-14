@@ -2,9 +2,7 @@ import discord
 from discord.ext import commands
 from discord_slash import cog_ext, SlashContext
 
-import importlib  
-from helpers.gen import respond
-guild_ids = importlib.import_module('non-only.env').DC_GUILDS.values()
+from helpers.gen import guild_ids, respond
 
 
 class Test(commands.Cog): # `Test` inherits from `commands.Cog`
