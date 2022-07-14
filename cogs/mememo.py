@@ -91,19 +91,13 @@ class Mememo(commands.Cog):
         guild_ids=guild_ids
     )
     async def recall(self, ctx, memory):
-        print('a')
         recall_msg = await ctx.channel.fetch_message(get_mememo(memory))
-        print('r')
 
         files = []
         for attachment in recall_msg.attachments:
-            print('s')
             files.append(await attachment.to_file(spoiler=attachment.is_spoiler()))
-        print('t')
         await respond(ctx, f'aauuhh')
-        print('g')
         await recall_msg.reply(f'I remember `{memory}`!\n{recall_msg.content}', files=files, mention_author=False)
-        print('w')
 
     @cog_ext.cog_slash(
         description='Tell non bot to forget the message associated with a name',
