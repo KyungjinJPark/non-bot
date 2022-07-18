@@ -96,7 +96,7 @@ class Mememo(commands.Cog):
         ],
         guild_ids=guild_ids
     )
-    async def recall(self, ctx, memory, reply):
+    async def recall(self, ctx, memory, reply = False):
         recall_msg = await ctx.channel.fetch_message(get_mememo(memory))
 
         files = []
